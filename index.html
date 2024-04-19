@@ -11,7 +11,7 @@
     <div class="header">📱 계산기</div>
     <div class="result-show">
         <div id="sub-result">서브결과</div>
-        <div id="result">0</div>
+        <div id="mainResult">0</div>
     </div>
     <div class="menu">
         <div class="menu-1">
@@ -30,13 +30,13 @@
             <button onclick="showValue(9)">9</button>
             <button onclick="showValue(6)">6</button>
             <button onclick="showValue(3)">3</button>
-            <button>➕</button>
+            <button onclick="addToSubResult('+')">➕</button>
         </div>
         <div class="menu-4">
             <button onclick="resetValue()">🚫</button>
             <button>➖</button>
             <button>➗</button>
-            <button style="background-color: deepskyblue; color: white">=</button>
+            <button onclick="calculateResult()" style="background-color: deepskyblue; color: white">=</button>
         </div>
     </div>
 </div>

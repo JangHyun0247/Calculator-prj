@@ -3,32 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>버튼 클릭 결과</title>
+    <title>계산기</title>
 </head>
 <body>
-<div id="result">0</div>
-<button onclick="showValue(10)">+10</button>
-<button onclick="showValue(5)">+5</button>
-<button onclick="showValue('-5')">-5</button>
-<button onclick="showValue('-10')">-10</button>
-<button onclick="resetValue()">초기화</button>
+<div id="subResult">서브 결과값: </div>
+<div id="mainResult">메인 결과값: </div>
+<br>
+<button onclick="addToResult(3)">3</button>
+<button onclick="addToSubResult('+')">+</button>
+<button onclick="calculateResult()">=</button>
 
 <script>
-    function showValue(value) {
-        var resultElement = document.getElementById("result");
-        var currentValue = parseFloat(resultElement.textContent);
+    var subResult = '';
+    var mainResult = 0;
 
-        if (value < 0) {
-            resultElement.textContent = "(" + Math.abs(value) + ") " + currentValue;
-        } else {
-            resultElement.textContent = currentValue + " + " + value;
-        }
+    function addToResult(value) {
+        mainResult = value;
+        document.getElementById("mainResult").textContent = "메인 결과값: " + mainResult;
     }
 
-    function resetValue() {
-        var resultElement = document.getElementById("result");
-        resultElement.textContent = "0";
+    function addToSubResult(operator) {
+        subResult += mainResult + operator;
+        document.getElementById("subResult").textContent = "서브 결과값: " + subResult;
+    }
+
+    function calculateResult() {
+        mainResult = eval(subResult + mainResult); // 서브 결과값과 메인 결과값을 계산하여 메인 결과값에 할당
+        document.getElementById("mainResult").textContent = "메인 결과값: " + mainResult;
+        subResult = ''; // 서브 결과값 초기화
+        document.getElementById("subResult").textContent = "서브 결과값: ";
     }
 </script>
 </body>
 </html>
++
