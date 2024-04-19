@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버튼 클릭 결과</title>
+</head>
+<body>
+<div id="result">0</div>
+<button onclick="showValue(10)">+10</button>
+<button onclick="showValue(5)">+5</button>
+<button onclick="showValue('-5')">-5</button>
+<button onclick="showValue('-10')">-10</button>
+<button onclick="resetValue()">초기화</button>
+
+<script>
+    function showValue(value) {
+        var resultElement = document.getElementById("result");
+        var currentValue = parseFloat(resultElement.textContent);
+
+        if (value < 0) {
+            resultElement.textContent = "(" + Math.abs(value) + ") " + currentValue;
+        } else {
+            resultElement.textContent = currentValue + " + " + value;
+        }
+    }
+
+    function resetValue() {
+        var resultElement = document.getElementById("result");
+        resultElement.textContent = "0";
+    }
+</script>
+</body>
+</html>
